@@ -27,6 +27,11 @@ class Veritrans_VtWeb {
    */
   public static function getRedirectionUrl($params)
   {
+    return static::getResult($param)->redirect_url;
+  }
+  
+  public static function getResult($params)
+  {
     $payloads = array(
       'payment_type' => 'vtweb',
       'vtweb' => array(
@@ -54,6 +59,6 @@ class Veritrans_VtWeb {
         Veritrans_Config::$serverKey,
         $payloads);
 
-    return $result->redirect_url;
+    return $result;
   }
 }
